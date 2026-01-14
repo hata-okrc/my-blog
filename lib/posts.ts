@@ -24,7 +24,7 @@ export function getAllSlugs(): string[] {
 }
 
 export function getAllPosts(): PostMeta[] {
-  const slugs = getAllSlugs();
+  const slugs: string[] = getAllSlugs();
 
   const posts: PostMeta[] = slugs.map((slug) => {
     const fullPath: string = path.join(postsDirectory, `${slug}.md`);
