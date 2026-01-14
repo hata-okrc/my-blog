@@ -2,7 +2,7 @@ import { getPostBySlug, getAllSlugs } from '@/lib/posts';
 import { markdownToHtml } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const slugs = getAllSlugs();
   return slugs.map((slug) => ({
     slug: slug,

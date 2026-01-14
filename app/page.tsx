@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <h1>My Blog</h1>
-      <Link href="/posts">Posts</Link>
+      <Link href="/posts">投稿一覧</Link>
     </div>
   );
 }
