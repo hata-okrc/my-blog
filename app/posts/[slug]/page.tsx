@@ -1,8 +1,19 @@
+/**
+ * 記事詳細ページ
+ * 
+ * 責務: 個別記事を表示するページコンポーネント
+ * 実行タイミング: Server Component（generateStaticParamsでビルド時にSSGで生成）
+ */
+
 import { getPostBySlug, getAllSlugs, getPostMeta } from "@/lib/posts";
 import { markdownToHtml } from "@/lib/markdown";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+/**
+ * generateStaticParams: ビルド時に実行され、すべてのslugを返す
+ * 実行タイミング: ビルド時（npm run build）
+ */
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
   return slugs.map((slug) => ({
@@ -10,12 +21,18 @@ export async function generateStaticParams() {
   }));
 }
 
+/**
+ * 記事詳細ページコンポーネント
+ * 実行タイミング: ビルド時（generateStaticParamsで生成された各slugに対して実行）
+ */
 export default async function PostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  
+  // データ取得: ビルド時に実行される
   const content = getPostBySlug(slug);
   const postMeta = getPostMeta(slug);
 
@@ -27,7 +44,27 @@ export default async function PostPage({
 
   return (
     <>
-      <div className="min-h-screen bg-[#FAF9F6] selection:bg-indigo-50">
+    <header>
+    <div className="group relative cursor-pointer ">
+        <div className="absolute -inset-2 bg-gradient-to-r from-indigo-50 to-rose-50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
+        <div className="relative bg-white/40 backdrop-blur-md border border-white/80 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden">
+          <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-indigo-100 to-transparent"></div>
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-[10px] tracking-[0.2em] uppercase text-slate-400 font-medium"></span>
+            <div className="h-px w-8 bg-slate-200"></div>
+          </div>
+          <div className="mt-6 flex items-center text-[15px] font-semibold tracking-widest text-slate-400 group-hover:text-indigo-400 transition-colors">
+            <Link href={"http://localhost:3000"}>ホームに戻る</Link>
+            <span className="ml-2 transform group-hover:translate-x-1 transition-transform">
+              →
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+<main>
+<div className="min-h-screen bg-[#FAF9F6] selection:bg-indigo-50">
         <article className="max-w-2xl mx-auto px-6 py-32">
           <header className="mb-16">
             <time className="text-xs font-mono text-slate-400 tracking-widest block mb-4">
@@ -47,25 +84,10 @@ export default async function PostPage({
           ></div>          
         </article>
 
-        <div className="group relative cursor-pointer ">
-        <div className="absolute -inset-2 bg-gradient-to-r from-indigo-50 to-rose-50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
-        <div className="relative bg-white/40 backdrop-blur-md border border-white/80 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden">
-          <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-indigo-100 to-transparent"></div>
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-[10px] tracking-[0.2em] uppercase text-slate-400 font-medium"></span>
-            <div className="h-px w-8 bg-slate-200"></div>
-          </div>
-          <div className="mt-6 flex items-center text-[11px] font-semibold tracking-widest text-slate-400 group-hover:text-indigo-400 transition-colors">
-            <Link href={"http://localhost:3000"}>Go To Home</Link>
-            <span className="ml-2 transform group-hover:translate-x-1 transition-transform">
-              →
-            </span>
-          </div>
-        </div>
+        
       </div>
-      </div>
-
-      
+  </main>    
+     
     </>
   );
 }
