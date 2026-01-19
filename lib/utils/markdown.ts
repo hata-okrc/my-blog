@@ -9,12 +9,20 @@
  */
 export function extractTitleFromMarkdown(content: string): string {
   const lines: string[] = content.split('\n');
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed.startsWith('# ')) {
-      return trimmed.substring(2).trim();
+  // for (const line of lines) {
+  //   const trimmed = line.trim();
+  //   if (trimmed.startsWith('# ')) {
+  //     return trimmed.substring(2).trim();
+  //   }
+  // }
+  lines.map((line) => {
+    const trimmed: string = line.trim();
+    const isBeginningWithSharp: boolean = trimmed.startsWith('# ');
+    if(isBeginningWithSharp){
+      const extractedTitle: string = trimmed.substring(2).trim();
+      return extractedTitle;
     }
-  }
+  })
   return '';
 }
 
@@ -24,9 +32,10 @@ export function extractTitleFromMarkdown(content: string): string {
  * @param maxLength - 最大文字数（デフォルト: 150）
  * @returns プレビューテキスト
  */
-export function extractExcerpt(content: string, maxLength: number = 150): string {
+export function extractExcerpt(content: string): string {
   // Markdownの見出し記号やリンク記号などを除去
-  let text = content
+  const maxLength: number = 150;
+  let contentText = content
     .replace(/^#+\s+/gm, '') // 見出し記号を除去
     .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // リンクをテキストに変換
     .replace(/!\[([^\]]*)\]\([^\)]+\)/g, '') // 画像を除去
@@ -36,20 +45,10 @@ export function extractExcerpt(content: string, maxLength: number = 150): string
     .replace(/\n+/g, ' ') // 改行をスペースに変換
     .trim();
 
-  if (text.length <= maxLength) {
-    return text;
+  if (contentText.length <= maxLength) {
+    return contentText;
   }
 
-  // 最大長で切り詰め、最後の句点やスペースで区切る
-  let excerpt = text.substring(0, maxLength);
-  const lastPeriod = excerpt.lastIndexOf('。');
-  const lastSpace = excerpt.lastIndexOf(' ');
-  
-  if (lastPeriod > maxLength * 0.7) {
-    excerpt = excerpt.substring(0, lastPeriod + 1);
-  } else if (lastSpace > maxLength * 0.7) {
-    excerpt = excerpt.substring(0, lastSpace);
-  }
-
-  return excerpt + '...';
+  let excerpt = contentText.substring(0, maxLength);
+  return excerpt + ' ...';
 }
