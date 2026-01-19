@@ -7,7 +7,7 @@ type FeaturedPostCardProps = {
   href: string;
 };
 
-export function FeaturedPostCard({
+export function LatestPostCard({
   title,
   date,
   excerpt,
@@ -15,7 +15,7 @@ export function FeaturedPostCard({
 }: FeaturedPostCardProps) {
   return (
     <article
-      className="glass rounded-3xl p-10 mb-12"
+      className="glass rounded-3xl p-10 mb-12 hover:shadow-lg transition-shadow fade-in"
       style={{ animationDelay: "0.2s" }}
     >
       <div className="text-slate-500 text-sm mb-3">{date}</div>

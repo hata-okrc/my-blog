@@ -10,7 +10,7 @@ export type PostMeta = {
 /**
  * 記事メタデータ + 本文抜粋
  */
-export type PostWithExcerpt = PostMeta & {
+export type PostMetaWithExcerpt = PostMeta & {
   excerpt: string;
 };
 

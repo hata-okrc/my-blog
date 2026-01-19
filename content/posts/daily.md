@@ -5,10 +5,14 @@
 
 using namespace std;
 
+```c++
 int main(){
-    int n; cin >> n;
-    return 0;
+    int n, m; cin >> n >> m;
+    int sum = n + m;
+    int minus = n - m;
+    return (sum minus);
 }
+```
 `
 
 
