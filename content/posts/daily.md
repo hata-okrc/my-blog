@@ -1,11 +1,10 @@
-# nextjsでブログを作った話
+# nextjsでブログを作ってみたらAIの凄さを実感した。
 
-`
-#include <iostream>
 
-using namespace std;
 
 ```c++
+#include <iostream>
+using namespace std;
 int main(){
     int n, m; cin >> n >> m;
     int sum = n + m;
@@ -13,7 +12,7 @@ int main(){
     return (sum minus);
 }
 ```
-`
+
 
 
 

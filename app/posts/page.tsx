@@ -9,17 +9,23 @@ export default function PostsPage() {
   return (
     <>
       <Header />
-      <main className="max-w-4xl mx-auto my-10">
-        <div className="text-center m-20">
-          <h1 className="text-6xl font-light gradient-text mb-4">記事一覧</h1>
+      <main className="max-w-screen-xl  my-10  md:px-12 mx-auto">
+        <div className="relative flex my-15 items-center">
+          <div className="flex-grow border-t border-gray-300"></div>
+          <span className="flex-shrink mx-4 text-gray-700 text-4xl font-medium">
+            記事一覧
+          </span>
+          <div className="flex-grow border-t border-gray-300"></div>
         </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          {posts.map((post, index) => (
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          {posts.map((post) => (
             <PostCard
               key={post.slug}
               title={post.title}
               date={post.date}
               href={`/posts/${post.slug}`}
+              // excerpt={post.excerpt}
             />
           ))}
         </div>
