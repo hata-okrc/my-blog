@@ -8,26 +8,26 @@ type PostCardProps = {
 };
 
 export function PostCard({ title, date, href, excerpt }: PostCardProps) {
-  const baseClass =
+  const baseclassName =
     "glass rounded-2xl p-8 fade-in hover:shadow-xl hover:border-black/20 transition-all duration-300";
 
   return (
-    <article className={baseClass}>
-      <div className="text-gray-400 text-xs font-medium mb-3 tracking-wider">
-        {date}
-      </div>
-
-      <h3 className="text-2xl font-semibold text-black mb-4">{title}</h3>
-
-      {excerpt && (
-        <p className="text-gray-600 leading-relaxed text-sm mb-6">{excerpt}</p>
-      )}
+    <>
       <Link
         href={href}
-        className="inline-flex items-center text-black font-medium hover:opacity-60 transition-opacity text-sm border-b border-black/10 pb-1"
+        className=" glass rounded-3xl  fade-in hover:shadow-2xl hover:border-black/20 transition-all duration-300  shadow-lg"
       >
-        続きを読む <span className="ml-1">→</span>
+        <div className="flex items-center px-6 py-3 bg-gray-800 rounded-t-xl">
+          <h1 className="mx-3 text-lg font-semibold text-white">{title}</h1>
+        </div>
+        <div className="px-6 py-4">
+          <p className="py-2 text-gray-700 dark:text-gray-400">{excerpt}</p>
+          <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+            <img src="/watchIcon.svg" alt="アイコン" className="w-6 h-6" />
+            <p className="px-2 text-sm">{date}</p>
+          </div>
+        </div>
       </Link>
-    </article>
+    </>
   );
 }

@@ -1,18 +1,8 @@
-/**
- * 記事詳細ページ
- *
- * 責務: 個別記事を表示するページコンポーネント
- * 実行タイミング: Server Component（generateStaticParamsでビルド時にSSGで生成）
- */
-
 import { getPostBySlug, getAllSlugs, getPostMeta } from "@/lib/posts";
 import { markdownToHtml } from "@/lib/markdown";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
-/**
- * generateStaticParams: ビルド時に実行され、すべてのslugを返す
- * 実行タイミング: ビルド時（npm run build）
- */
+
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
   return slugs.map((slug) => ({
@@ -20,10 +10,7 @@ export async function generateStaticParams() {
   }));
 }
 
-/**
- * 記事詳細ページコンポーネント
- * 実行タイミング: ビルド時（generateStaticParamsで生成された各slugに対して実行）
- */
+
 export default async function PostPage({
   params,
 }: {
@@ -31,7 +18,6 @@ export default async function PostPage({
 }) {
   const { slug } = await params;
 
-  // データ取得: ビルド時に実行される
   const content = getPostBySlug(slug);
   const postMeta = getPostMeta(slug);
 
@@ -45,7 +31,7 @@ export default async function PostPage({
     <>
       <Header />
 
-      <main>
+      {/* <main>
         <div className="min-h-screen bg-[#FAF9F6] selection:bg-indigo-50">
           <article className="max-w-2xl mx-auto px-6 py-32">
             <header className="mb-16">
@@ -66,7 +52,17 @@ export default async function PostPage({
             ></div>
           </article>
         </div>
-      </main>
+      </main> */}
+
+<main className="max-w-3xl mx-auto py-20 px-6">
+      
+        <time className="text-gray-400 text-sm mb-4 block">{postMeta.date}</time>
+      
+      <div 
+        className="article-content fade-in" 
+        dangerouslySetInnerHTML={{ __html: htmlContent }} 
+      />
+    </main>
     </>
   );
 }

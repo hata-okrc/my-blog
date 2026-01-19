@@ -1,10 +1,12 @@
----
-title: "Hello World"
-date: "2026-01-15"
----
+# nextjsでブログを構築
 
-# Hello World
+## 使用技術
 
-This is my first blog post.
+- next.js
+- githubPages(予定)
 
-Thank you!!
+### 流れ
+自力でサービスを作るのは初めてのため、まずは基本機能を実装し、デプロイ。
+記事を作りながら並行でで機能追加も行っていく。
+
+![js](/js.jpg)
