@@ -30,3 +30,17 @@ export function extractExcerpt(content: string): string {
   let excerpt = contentText.substring(0, maxLength);
   return excerpt + ' ...';
 }
+
+
+export function getToc(content: string) {
+  // 正規表現で見出しを抽出（例: ## 見出し -> h2）
+  const headings = content.match(/^(#|##|###) .+/gm) || [];
+  
+  return headings.map((heading) => {
+    const level = heading.split(' ')[0].length; 
+    const text = heading.replace(/^(#|##|###) /, '');
+    const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+    
+    return { level, text, id };
+  });
+}
