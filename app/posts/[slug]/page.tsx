@@ -2,6 +2,8 @@ import { getPostBySlug, getAllSlugs, getPostMeta } from "@/lib/posts";
 import { markdownToHtml } from "@/lib/markdown";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
+import { PostMeta } from "@/types/post";
+import { getToc } from "@/lib/utils/markdown";
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -15,30 +17,52 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
-
-  const content = getPostBySlug(slug);
-  const postMeta = getPostMeta(slug);
+  const { slug }: { slug: string } = await params;
+  const content: string | null = getPostBySlug(slug);
+  const postMeta: PostMeta | null = getPostMeta(slug);
 
   if (!content || !postMeta) {
     notFound();
   }
 
   const htmlContent = await markdownToHtml(content);
+  const toc = getToc(content);
 
   return (
     <>
       <Header />
-
-      <main className="max-w-3xl mx-auto py-20 px-6">
-        <time className="text-gray-400 text-sm mb-4 block">
-          {postMeta.date}
-        </time>
-
-        <div
-          className="article-content fade-in"
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
-        />
+       <main className="max-w-6xl mx-auto py-12 md:py-20 px-6">
+        <div className="flex flex-col lg:flex-row gap-12">
+          <article className="flex-1 min-w-0">
+            <div
+              className="article-content fade-in"
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
+            />
+          </article>
+          <aside className="hidden lg:block w-64">
+            <div className="sticky top-24 p-6  rounded-2xl border border-black bg-white">
+              <h2 className="text-xs font-bold text-black uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                <span className="w-4 h-px bg-black"></span>
+                目次
+              </h2>
+              <nav>
+                <ul className="space-y-3 text-sm">
+                  {toc.map((item) => (
+                    <li
+                      key={item.id}
+                      style={{ paddingLeft: `${(item.level - 1) * 1}rem` }} 
+                      className="text-gray-500 hover:text-black transition-colors"
+                    >
+                      <a href={`#${item.id}`} className="block py-1">
+                        {item.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          </aside>
+        </div>
       </main>
     </>
   );

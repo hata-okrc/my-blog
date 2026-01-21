@@ -5,7 +5,6 @@ import { Header } from "@/components/Header";
 export default function PostsPage() {
   // データ取得: ビルド時に実行される
   const posts = getAllPosts();
-
   return (
     <>
       <Header />

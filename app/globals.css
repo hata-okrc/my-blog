@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+html {
+  scroll-padding-top: 85px;
+  scroll-behavior: smooth;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -15,54 +20,13 @@
   animation: fadeIn 0.8s ease-out forwards;
 }
 
-.gradient-text {
-
-  background: linear-gradient(to right, #000000, #333333, #555555);
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.glass {
-  background: #ffffff;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
 body {
   background: linear-gradient(135deg, #ffffff 0%, #ebebeb 100%);
   color: #000000;
   min-height: 100vh;
-  /* /* display: flex; */
-  /* flex-direction: column;  */
+  /* display: flex;
+  flex-direction: column;  */
 }
-.shimmer {
-  position: relative;
-  overflow: hidden;
-}
-.shimmer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.8),
-    transparent
-  );
-
-  animation: shimmer 3s infinite;
-}
-@keyframes shimmer {
-  100% {
-    left: 100%;
-  }
-}
-
-/* globals.css への追加を推奨 */
 
 .article-content {
   color: #1a1a1a;
@@ -70,7 +34,7 @@ body {
   font-size: 1.1rem;
 }
 
-/* 見出し - 黒強調とタイポグラフィ */
+
 .article-content h1 {
   font-size: 2.0rem;
   font-weight: 550;
@@ -114,7 +78,7 @@ body {
   text-decoration-color: #000;
 }
 
-/* リスト */
+
 .article-content ul, .article-content ol {
   margin-bottom: 1.5rem;
   padding-left: 1.5rem;
@@ -130,7 +94,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* 引用 - ロックなニュアンスのグレー */
+
 .article-content blockquote {
   margin: 2rem 0;
   padding: 1.5rem;
@@ -165,7 +129,7 @@ body {
   border: 1px solid rgba(0,0,0,0.05);
 }
 
-/* テーブル */
+
 .article-content table {
   width: 100%;
   border-collapse: collapse;

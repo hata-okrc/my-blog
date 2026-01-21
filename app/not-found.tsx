@@ -4,7 +4,6 @@ export default function NotFound() {
   return (
     <main className="min-height-screen flex items-center justify-center px-6 py-24">
       <div className="max-w-md w-full text-center fade-in">
-        <h1 className="text-9xl font-black gradient-text mb-4">404</h1>
         <div className="glass rounded-2xl p-8 mb-8">
           <h2 className="text-xl font-bold text-black mb-2">
             ページが見つかりませんでした
@@ -15,7 +14,6 @@ export default function NotFound() {
           </p>
         </div>
 
-        {/* アクションボタン */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/"
