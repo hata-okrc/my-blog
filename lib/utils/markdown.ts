@@ -12,7 +12,7 @@ export function extractTitleFromMarkdown(content: string): string {
 
 export function extractExcerpt(content: string): string {
   // Markdownの見出し記号やリンク記号などを除去
-  const maxLength: number = 150;
+  const maxLength: number = 80;
   let contentText = content
     .replace(/^#+\s+/gm, '') // 見出し記号を除去
     .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // リンクをテキストに変換

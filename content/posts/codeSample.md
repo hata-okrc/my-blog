@@ -1,4 +1,4 @@
-# nextjsでブログを作ってみたらAIの凄さを実感した。
+# Code Sample Title
 
 
 
