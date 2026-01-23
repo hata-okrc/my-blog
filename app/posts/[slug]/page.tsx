@@ -31,7 +31,7 @@ export default async function PostPage({
   return (
     <>
       <Header />
-       <main className="max-w-6xl mx-auto py-12 md:py-20 px-6">
+      <main className="max-w-6xl mx-auto py-12 md:py-20 px-6">
         <div className="flex flex-col lg:flex-row gap-12">
           <article className="flex-1 min-w-0">
             <div
@@ -49,12 +49,12 @@ export default async function PostPage({
                 <ul className="space-y-3 text-sm">
                   {toc.map((item) => (
                     <li
-                      key={item.id}
-                      style={{ paddingLeft: `${(item.level - 1) * 1}rem` }} 
+                      key={item.ref}
+                      style={{ paddingLeft: `${(item.level - 1) * 1}rem` }}
                       className="text-gray-500 hover:text-black transition-colors"
                     >
-                      <a href={`#${item.id}`} className="block py-1">
-                        {item.text}
+                      <a href={`#${item.ref}`} className="block py-1">
+                        {item.title}
                       </a>
                     </li>
                   ))}

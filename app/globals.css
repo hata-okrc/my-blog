@@ -34,9 +34,8 @@ body {
   font-size: 1.1rem;
 }
 
-
 .article-content h1 {
-  font-size: 2.0rem;
+  font-size: 2rem;
   font-weight: 550;
   margin: 3rem 0 1.5rem;
   padding-bottom: 0.5rem;
@@ -78,8 +77,8 @@ body {
   text-decoration-color: #000;
 }
 
-
-.article-content ul, .article-content ol {
+.article-content ul,
+.article-content ol {
   margin-bottom: 1.5rem;
   padding-left: 1.5rem;
 }
@@ -94,7 +93,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-
 .article-content blockquote {
   margin: 2rem 0;
   padding: 1.5rem;
@@ -104,8 +102,7 @@ body {
   color: #666;
 }
 
-
- .article-content pre {
+.article-content pre {
   color: #eee;
   padding: 1.5rem;
   border-radius: 0.75rem;
@@ -126,9 +123,8 @@ body {
   border-radius: 1rem;
   margin: 2.5rem auto;
   display: block;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
-
 
 .article-content table {
   width: 100%;
@@ -136,7 +132,8 @@ body {
   margin-bottom: 2rem;
 }
 
-.article-content th, .article-content td {
+.article-content th,
+.article-content td {
   border: 1px solid #eee;
   padding: 0.75rem;
   text-align: left;
