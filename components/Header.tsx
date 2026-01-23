@@ -37,7 +37,7 @@ export function Header() {
             >
               <div className="w-8 h-8 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105">
                 <Image
-                  src="/githubIcon.svg"
+                  src="/gitHubIcon.svg"
                   alt="アイコン"
                   width={100}
                   height={100}
