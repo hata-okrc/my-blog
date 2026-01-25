@@ -4,9 +4,10 @@ type PostCardProps = {
   title: string;
   date: string;
   href: string;
+  excerpt?: string;
 };
 
-export function PostCard({ title, date, href }: PostCardProps) {
+export function LatestPostCard({ title, date, href, excerpt }: PostCardProps) {
   return (
     <>
       <Link
@@ -16,8 +17,11 @@ export function PostCard({ title, date, href }: PostCardProps) {
         <div className="flex items-center px-6 py-3 bg-gray-800 rounded-t-xl">
           <h1 className="mx-3 text-lg font-semibold text-white">{title}</h1>
         </div>
-        <div className="px-6 py-4 flex items-center mt-2 text-gray-700 dark:text-gray-200">
-          <p className="px-2 text-sm">{date}</p>
+        <div className="px-6 py-4">
+          <p className="py-2 text-gray-700 dark:text-gray-400">{excerpt}</p>
+          <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+            <p className="px-2 text-sm">{date}</p>
+          </div>
         </div>
       </Link>
     </>

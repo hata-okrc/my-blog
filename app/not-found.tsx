@@ -1,8 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function NotFound() {
   return (
-    <main className="min-height-screen flex items-center justify-center px-6 py-24">
+    <main className="min-height-screen flex flex-col items-center justify-center px-6 py-24">
+      <Image
+        src="/logo.svg"
+        alt="B-side Beta Logo"
+        width={800}
+        height={40}
+        priority
+      />
       <div className="max-w-md w-full text-center fade-in">
         <div className="glass rounded-2xl p-8 mb-8">
           <h2 className="text-xl font-bold text-black mb-2">

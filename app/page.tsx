@@ -1,5 +1,5 @@
 import { getLatestPosts } from "@/lib/posts";
-import { PostCard } from "@/components/PostCard";
+import { LatestPostCard } from "@/components/LatestPostCard";
 import { formatDate } from "@/lib/utils/date";
 import { PostMetaWithExcerpt } from "@/types/post";
 import { Header } from "@/components/Header";
@@ -25,7 +25,7 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {posts.slice(0, 6).map((post) => (
-            <PostCard
+            <LatestPostCard
               key={post.slug}
               title={post.title}
               date={formatDate(post.date)}

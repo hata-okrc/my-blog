@@ -1,0 +1,23 @@
+<svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="distortion">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <pattern id="circuit-pattern" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M10 0 L0 10 M-2 2 L2 -2 M8 12 L12 8" stroke="#000000" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="5" cy="5" r="1" fill="#000000" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <g transform="translate(0, 2)">
+    <path d="M18 0 C8 0, 0 8, 0 20 C0 32, 8 36, 18 36 L24 36 L30 20 L18 0 Z" fill="#000000" />
+    <path d="M16 4 L12 18 H18 L14 32 L24 14 H18 L22 4 H16 Z" fill="#ffffff" />
+  </g>
+
+  <g transform="translate(38, 26)" filter="url(#distortion)">
+    <text x="0" y="0" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="20" fill="#000000" letter-spacing="-1">B-SIDE</text>
+    <text x="76" y="0" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="url(#circuit-pattern)" stroke="#000000" stroke-width="1">BETA</text>
+    <path d="M2 6 C30 8, 60 4, 90 6 C100 7, 120 8, 130 6" stroke="#000000" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

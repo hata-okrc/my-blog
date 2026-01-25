@@ -3,7 +3,6 @@ import { PostCard } from "@/components/PostCard";
 import { Header } from "@/components/Header";
 
 export default function PostsPage() {
-  // データ取得: ビルド時に実行される
   const posts = getAllPosts();
   return (
     <>
@@ -16,7 +15,6 @@ export default function PostsPage() {
           </span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {posts.map((post) => (
             <PostCard
@@ -24,7 +22,6 @@ export default function PostsPage() {
               title={post.title}
               date={post.date}
               href={`/posts/${post.slug}`}
-              // excerpt={post.excerpt}
             />
           ))}
         </div>

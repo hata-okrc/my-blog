@@ -1,0 +1,58 @@
+<svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- グラデーション定義 -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="glitchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#404040;stop-opacity:0.4" />
+      <stop offset="50%" style="stop-color:#2a2a2a;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#505050;stop-opacity:0.4" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景を透明に -->
+  
+  <!-- グリッチ/ディストーションエフェクト -->
+  <rect x="30" y="45" width="520" height="3" fill="url(#glitchGrad)" opacity="0.6" transform="skewX(-2)">
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="40" y="72" width="480" height="2" fill="url(#glitchGrad)" opacity="0.4" transform="skewX(1)">
+    <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1.8s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- テキスト: B-side（斜体でロックっぽく） -->
+  <text x="40" y="75" font-family="'Impact', 'Arial Black', sans-serif" font-size="44" font-weight="900" fill="#1a1a1a" letter-spacing="2" transform="skewX(-5)">B-SIDE</text>
+  
+  <!-- テキストのシャドウ効果 -->
+  <text x="42" y="77" font-family="'Impact', 'Arial Black', sans-serif" font-size="44" font-weight="900" fill="#3a3a3a" letter-spacing="2" transform="skewX(-5)" opacity="0.4">B-SIDE</text>
+  
+  <!-- スラッシュ区切り - ラフに -->
+  <text x="205" y="75" font-family="'Impact', sans-serif" font-size="50" font-weight="900" fill="#4a4a4a" letter-spacing="2" transform="rotate(-10 205 75)">/</text>
+  
+  <!-- テキスト: Beta -->
+  <text x="240" y="75" font-family="'Courier New', monospace" font-size="44" font-weight="bold" fill="#2a2a2a" letter-spacing="4" style="text-decoration: line-through; text-decoration-color: #1a1a1a; text-decoration-thickness: 1px;">Beta</text>
+  
+  <!-- バージョン表記 - 手書き風 -->
+  <text x="395" y="72" font-family="'Courier New', monospace" font-size="11" font-weight="bold" fill="#4a4a4a" opacity="0.7" transform="rotate(-5 395 72)">v0.∞</text>
+  
+  <!-- ステッカー風デコレーション -->
+  <polygon points="425,35 435,25 445,35 435,45" fill="none" stroke="#2a2a2a" stroke-width="2" opacity="0.6"/>
+  <polygon points="430,30 435,25 440,30 435,35" fill="#3a3a3a" opacity="0.4"/>
+  
+  <!-- 稲妻アイコン（ロック的要素） -->
+  <path d="M 15 40 L 20 50 L 17 50 L 22 65 L 12 52 L 15 52 Z" fill="#2a2a2a" opacity="0.6">
+    <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="2s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- ノイズライン -->
+  <line x1="20" y1="85" x2="420" y2="88" stroke="#1a1a1a" stroke-width="1" opacity="0.2" stroke-dasharray="5,3"/>
+  
+  <!-- 追加のロック要素：×マーク -->
+  <g transform="translate(550, 60)">
+    <line x1="-8" y1="-8" x2="8" y2="8" stroke="#2a2a2a" stroke-width="3" opacity="0.5"/>
+    <line x1="8" y1="-8" x2="-8" y2="8" stroke="#2a2a2a" stroke-width="3" opacity="0.5"/>
+  </g>
+</svg>

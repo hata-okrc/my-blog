@@ -34,15 +34,15 @@ export function extractExcerpt(content: string): string {
 
 export function getToc(content: string) {
   const headings: string[] = content.match(/^(#|##|###) .+/gm) || [];
+  const toc: { level: number; title: string; ref: string; key: string }[] = [];
 
-  const toc: { level: number; title: string; ref: string; id: string }[] = [];
   for (let i = 0; i < headings.length; i++) {
     const level: number = headings[i].split(" ")[0].length;
     const title: string = headings[i].replace(/^(#|##|###) /, "");
     const slugger = new GithubSlugger();
     const ref: string = slugger.slug(title);
-    const id: string = String(i);
-    toc.push({ level, title, ref, id });
+    const key: string = String(i);
+    toc.push({ level, title, ref, key });
   }
   return toc;
 }
