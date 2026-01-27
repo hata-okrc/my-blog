@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { PostMeta } from "@/types/post";
 import { getToc } from "@/lib/utils/markdown";
+import { TableOfContents } from "@/components/TableOfContents";
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -41,24 +42,19 @@ export default async function PostPage({
           </article>
           <aside className="hidden lg:block w-64">
             <div className="sticky top-24 p-6  rounded-2xl border border-black bg-white">
-              
               <h2 className="text-xs font-bold text-black uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
                 <span className="w-4 h-px bg-black"></span>
                 table of contents
               </h2>
               <nav className="space-y-3 text-sm">
-                {/* <ul className=""> */}
                 {toc.map((item) => (
-                  <a
+                  <TableOfContents
+                    level={item.level}
+                    title={item.title}
+                    href={item.href}
                     key={item.key}
-                    href={`#${item.ref}`}
-                    className="block py-1 ext-gray-500 hover:text-black transition-colors"
-                    style={{ paddingLeft: `${(item.level - 1) * 1}rem` }}
-                  >
-                    {item.title}
-                  </a>
+                  />
                 ))}
-                {/* </ul> */}
               </nav>
             </div>
           </aside>

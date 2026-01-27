@@ -6,10 +6,6 @@ import { Header } from "@/components/Header";
 
 export default function Home() {
   const posts: PostMetaWithExcerpt[] = getLatestPosts();
-  posts.map((post) => {
-    console.log(`タイトル: ${post.title}`);
-  });
-
   return (
     <>
       <Header />
